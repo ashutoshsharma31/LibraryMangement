@@ -1,5 +1,7 @@
 package com.cleartrip.library.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +16,16 @@ public class UserService {
 	public User find(String emailId) {
 		return userRepository.findAllByEmailId(emailId);
 	}
-	public void save(User user) {
-		userRepository.save(user);
+	public User save(User user) {
+		return userRepository.save(user);
 	}
 	public void update(User user) {
 		userRepository.save(user);
 	}
 	public void delete(User user) {
 		userRepository.delete(user);
+	}
+	public List<User> findAll() {
+		return (List<User>) userRepository.findAll();
 	}
 }
