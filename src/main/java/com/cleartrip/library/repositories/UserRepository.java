@@ -7,4 +7,6 @@ import com.cleartrip.library.entities.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
 
+	public User findAllByEmailId(String emailId);
+
 }
