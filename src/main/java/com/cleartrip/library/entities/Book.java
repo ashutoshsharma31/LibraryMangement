@@ -4,19 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import org.hibernate.search.annotations.Field;
 @Entity
 public class Book {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    @Field
+    private long id;	
     private String name;
-    @Field
     private String author;
-    @Field
     private int totalVolumn;
-    @Field
     private int availableVolumn;
 	public long getId() {
 		return id;

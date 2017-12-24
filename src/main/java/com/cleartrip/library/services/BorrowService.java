@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.cleartrip.library.entities.Book;
 import com.cleartrip.library.entities.Borrow;
 import com.cleartrip.library.entities.User;
-import com.cleartrip.library.repositories.BorrowRepository;
 
 @Service
 public class BorrowService {

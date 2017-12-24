@@ -1,4 +1,4 @@
-package com.cleartrip.library.repositories;
+package com.cleartrip.library.services;
 
 import java.util.List;
 
