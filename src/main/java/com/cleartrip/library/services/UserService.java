@@ -15,15 +15,19 @@ public class UserService {
 	public User find(String emailId) {
 		return userRepository.findAllByEmailId(emailId);
 	}
+
 	public User save(User user) {
 		return userRepository.save(user);
 	}
+
 	public void update(User user) {
 		userRepository.save(user);
 	}
-	public void delete(User user) {
-		userRepository.delete(user);
+
+	public void delete(int id) {
+		userRepository.delete(userRepository.findOne(id));
 	}
+
 	public List<User> findAll() {
 		return (List<User>) userRepository.findAll();
 	}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="user">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Library Managment System for Cleartip</title>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script src="js/app.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/simple-sidebar.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<div id="wrapper" class="toggled">
+
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand"><a href="#"> Menu </a></li>
+				<li><a href="/users.html">Users</a></li>
+				<li><a href="/books.html">Books</a></li>
+				<li><a href="/borrow.html">Borrow</a></li>
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<h1>Users</h1>
+				
+				<hr>
+
+				<div  ng-controller="postcontroller">
+					<form ng-submit="sendPost()">
+						{{message}}
+						Name : <input ng-model="name" />
+						Email Id : <input ng-model="emailId" />
+						Password : <input ng-model="password" />			
+						<button type="submit">Send</button>
+					</form>
+				</div>
+
+				<hr>
+				<div ng-controller="getcontroller">
+					<table>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Email Id</th>
+							<th>Password</th>
+						</tr>
+						<tr>
+							<th><input ng-model="search.id" /></th>
+							<th><input ng-model="search.name" /></th>
+							<th><input ng-model="search.emailId" /></th>
+							<th><input ng-model="search.password" /></th>
+						</tr>
+						<tr ng-repeat="user in data | filter:search">
+							<td>{{ user.id }}</td>
+							<td>{{ user.name }}</td>
+							<td>{{ user.emailId }}</td>
+							<td>{{ user.password }}</td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+			<!-- /#page-content-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
+
+		<!-- Bootstrap core JavaScript -->
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+<script type="text/javascript">
+
+
+function deleteItem(var index)
+{
+	 var data = {
+     		'name': index
+	 };
+	$http.delete("/api/users/", data,config).success(function(data, status) {
+    	alert("data posted");
+    	location.reload();
+    });
+}
+
+</script>
+</html>
