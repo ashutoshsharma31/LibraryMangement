@@ -13,7 +13,10 @@ import com.cleartrip.library.entities.User;
 public class BorrowService {
 	@Autowired
 	BorrowRepository borrowRepository;
-
+	@Autowired
+	UserRepository userRepository;
+	@Autowired
+	BookRepository bookRepository;
 	public List<Borrow> find(String emailId) {
 		return borrowRepository.findAllByUserEmailId(emailId);
 	}
@@ -27,6 +30,9 @@ public class BorrowService {
 	}
 
 	public Borrow save(Borrow borrow) {
+		System.out.println(borrow);
+		borrow.setUser(userRepository.findByEmailId(borrow.getUser().getEmailId()));
+		borrow.setBook(bookRepository.findByName(borrow.getBook().getName()));
 		return borrowRepository.save(borrow);
 	}
 

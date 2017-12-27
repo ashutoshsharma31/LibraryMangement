@@ -13,7 +13,19 @@ public class User {
 	private String name;
 	private String emailId;
 	private String password;
-
+	public User(){
+		super();
+	}
+	public User(long id){
+		super();
+		this.id = id;
+	}
+	
+	public User(String emailId){
+		super();
+		this.emailId = emailId;
+	}
+	
 	public long getId() {
 		return id;
 	}

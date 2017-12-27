@@ -13,8 +13,8 @@ public class BookService {
 	@Autowired
 	BookRepository bookRepository;
 
-	public List<Book> find(String name) {
-		return bookRepository.findAllByName(name);
+	public Book find(String name) {
+		return bookRepository.findByName(name);
 	}
 
 	public Book save(Book book) {

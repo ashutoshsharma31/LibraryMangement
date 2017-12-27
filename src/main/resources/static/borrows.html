@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="book">
+<html lang="en">
 
 <head>
 
@@ -11,14 +11,16 @@
 
 <title>Library Managment System for Cleartip</title>
 <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-<script src="js/app.js"></script>
+<script src="js/borrow.js"></script>
+
+
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="css/simple-sidebar.css" rel="stylesheet">
 </head>
 
-<body>
+<body  ng-app="borrow" ng-controller="borrowcontroller">
 
 	<div id="wrapper" class="toggled">
 
@@ -38,26 +40,20 @@
 			<div class="container-fluid">
 				<h1>Borrow Book</h1>
 				<hr>
-				<div  ng-controller="bookBorrowcontroller">
-					<form ng-submit="sendPost()">
-						User : <input ng-model="user" />
-						Book : <input ng-model="book" />
-						Borrow Date : <input ng-model="borrowDate" />
+				<div>
+					<form ng-submit="borrowBook()">
+						User : <select name="repeatSelect" id="repeatSelect" ng-model="borrowform.user">
+							      <option ng-repeat="option in userslist" value="{{option.emailId}}">{{option.name}}</option>
+							    </select>
+						Book : <select name="repeatSelect" id="repeatSelect" ng-model="borrowform.book">
+							      <option ng-repeat="option in bookslist" value="{{option.name}}">{{option.name}}</option>
+							    </select>
+						Borrow Date : <input type="text" id="datepicker" ng-model="borrowform.borrowDate"></p>
 						<button type="submit">Borrow</button>
 					</form>
 				</div>
-				<h1>Return Book</h1>
 				<hr>
-				<div  ng-controller="bookReturncontroller">
-					<form ng-submit="sendPost()">
-						User : <input ng-model="name" />
-						Book : <input ng-model="book" />
-						Return Date : <input ng-model="returnDate" />		
-						<button type="submit">Return</button>
-					</form>
-				</div>
-				<hr>
-				<div ng-controller="getcontroller">
+				<div>
 					<table>
 						<tr>
 							<th>Id</th>
@@ -73,11 +69,13 @@
 							<th><input ng-model="search.totalVolume" /></th>
 							<th><input ng-model="search.availableVolume" /></th>
 						</tr>
-						<tr ng-repeat="book in data | filter:search">
-							<td>{{ book.id }}</td>
-							<td>{{ book.author }}</td>
-							<td>{{ book.totalVolume }}</td>
-							<td>{{ user.availableVolume }}</td>
+						<tr ng-repeat="borrow in borrows | filter:search">
+							<td>{{ borrow.id }}</td>
+							<td>{{ borrow.user }}</td>
+							<td>{{ borrow.book }}</td>
+							<td>{{ borrow.borrowDate }}</td>
+							<td>{{ borrow.returnDate }}</td>
+							<td><a ng-click="returnBook(borrow)" class="btn btn-primary btn-sm">Return Book</a></td>
 						</tr>
 					</table>
 				</div>
@@ -90,7 +88,15 @@
 
 		<!-- Bootstrap core JavaScript -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-		<script src="vendor/jquery/jquery.min.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script>
+		  $( function() {
+		    $( "#datepicker" ).datepicker();
+		  } );
+		</script>
 </body>
 </html>

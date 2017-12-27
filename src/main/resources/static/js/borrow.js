@@ -1,64 +1,95 @@
-var app = angular.module('user', []);
+var app = angular.module('borrow', []);
 
-app.controller('usercontroller', function($scope, $http) {
-    $scope.users = []
-    $scope.userform = {
-        id: "",
-        name: "",
-        emailId: "",
-        password: ""
+app.controller('borrowcontroller', function($scope, $http) {
+    $scope.borrows = []
+    $scope.userslist = []
+    $scope.bookslist = []
+    $scope.borrowform = {
+        id: 0,
+        user: 0,
+        book: 0,
+        borrowDate: "",
+        returnDate: ""
     };
 
-    getUserDetails();
-
-    function getUserDetails() {
+    getBorrowDetails();
+    getUsers();
+    getBooks();
+    $scope.myDate = new Date();
+    function getBorrowDetails() {
         $http({
             method: 'GET',
-            url: '/api/users/'
+            url: '/api/borrows/'
         }).then(function successCallback(response) {
-            $scope.users = response.data;
+            $scope.borrows = response.data;
         }, function errorCallback(response) {
             console.log(response.statusText);
         });
     }
 
-    $scope.sendPost = function() {
+    
+    
+    function getUsers() {
+        $http({
+            method: 'GET',
+            url: '/api/users/'
+        }).then(function successCallback(response) {
+            $scope.userslist = response.data;
+        }, function errorCallback(response) {
+            console.log(response.statusText);
+        });
+    }
+    
+    function getBooks() {
+        $http({
+            method: 'GET',
+            url: '/api/books/'
+        }).then(function successCallback(response) {
+            $scope.bookslist = response.data;
+        }, function errorCallback(response) {
+            console.log(response.statusText);
+        });
+    }
+    
+    $scope.borrowBook = function() {
         $http({
             method: 'POST',
-            url: '/api/users/',
-            data: $scope.userform,
+            url: '/api/borrows/',
+            data: $scope.borrowform,
             headers: {
                 'Content-Type': 'application/json'
             }
         }).then(function(response) {
-            getUserDetails();
-            $scope.users = response.data;
+            getBorrowDetails();
+            $scope.borrows = response.data;
             clearForm();
         }, function(error) {
 
         });
     }
-    $scope.editUser = function(user) {
-        $scope.userform.id = user.id;
-        $scope.userform.name = user.name;
-        $scope.userform.emailId = user.emailId;
-        $scope.userform.password = user.password;
+    $scope.editBorrow = function(borrow) {
+        $scope.borrowform.id = borrow.id;
+        $scope.borrowform.user = borrow.user;
+        $scope.borrowform.book = borrow.book;
+        $scope.borrowform.borrowDate = borrow.borrowDate;
+        $scope.borrowform.returnDate = borrow.returnDate;
     }
-    $scope.deleteUser = function(user) {
+    $scope.deleteBook = function(book) {
         $http({
             method: 'DELETE',
-            url: '/api/users/',
-            data: user,
+            url: '/api/borrows/',
+            data: borrow,
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(getUserDetails());
+        }).then(getBorrowDetails());
     }
 
     function clearForm() {
-        $scope.userform.id = "";
-        $scope.userform.name = "";
-        $scope.userform.emailId = "";
-        $scope.userform.password = "";
+        $scope.borrowform.id = 0;
+        $scope.borrowform.user = 0;
+        $scope.borrowform.book = 0;
+        $scope.borrowform.borrowDate = "";
+        $scope.borrowform.returnDate = "";
     };
 });

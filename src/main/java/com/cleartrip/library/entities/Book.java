@@ -13,6 +13,21 @@ public class Book {
     private String author;
     private int totalVolume;
     private int availableVolume;
+    
+    public Book(){
+		super();
+	}
+	public Book(long id){
+		super();
+		this.id = id;
+	}
+	
+	public Book(String name){
+		super();
+		this.name = name;
+	}
+    
+    
 	public long getId() {
 		return id;
 	}
