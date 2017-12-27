@@ -26,15 +26,20 @@ public class BorrowService {
 		return borrowRepository.findAllByBook(book);
 	}
 
-	public void save(Borrow borrow) {
-		borrowRepository.save(borrow);
+	public Borrow save(Borrow borrow) {
+		return borrowRepository.save(borrow);
 	}
 
 	public void update(Borrow borrow) {
 		borrowRepository.save(borrow);
 	}
 
-	public void delete(Borrow borrow) {
-		borrowRepository.delete(borrow);
+	public void delete(int id) {
+		borrowRepository.delete(borrowRepository.findOne(id));
+	}
+
+	public List<Borrow> findAll() {
+		// TODO Auto-generated method stub
+		return (List<Borrow>) borrowRepository.findAll();
 	}
 }

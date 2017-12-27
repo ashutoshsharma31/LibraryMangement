@@ -12,32 +12,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cleartrip.library.entities.User;
-import com.cleartrip.library.services.UserService;
+import com.cleartrip.library.entities.Book;
+import com.cleartrip.library.services.BookService;
 
 @RestController
-@RequestMapping("/api/users")
-public class UserController {
+@RequestMapping("/api/books")
+public class BookController {
 	@Autowired
-	UserService userService;
+	BookService bookService;
 
-	// Get All Users
+	// Get All Books
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public List<User> getAllUsers() {
-		return userService.findAll();
+	public List<Book> getAllBooks() {
+		return bookService.findAll();
 	}
 	
-	// Create a new User
+	// Create a new Book
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public User createUser(@RequestBody User user) {
-		System.out.println(user);
-	    return userService.save(user);
+	public Book createBook(@RequestBody Book book) {
+		System.out.println(book);
+	    return bookService.save(book);
 	}
 	
-	// Create a new User
+	// Create a new Book
 	@RequestMapping(value = "/", method = RequestMethod.DELETE)
-	public void deleteUser(@RequestBody User user) {
-		System.out.println(user);
-	    userService.delete(user);
+	public void deleteBook(@RequestBody Book book) {
+		System.out.println(book);
+	    bookService.delete(book);
 	}
 }

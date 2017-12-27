@@ -12,32 +12,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cleartrip.library.entities.User;
-import com.cleartrip.library.services.UserService;
+import com.cleartrip.library.entities.Borrow;
+import com.cleartrip.library.services.BorrowService;
 
 @RestController
-@RequestMapping("/api/users")
-public class UserController {
+@RequestMapping("/api/borrows")
+public class BorrowController {
 	@Autowired
-	UserService userService;
+	BorrowService borrowService;
 
-	// Get All Users
+	// Get All Borrows
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public List<User> getAllUsers() {
-		return userService.findAll();
+	public List<Borrow> getAllBorrows() {
+		return borrowService.findAll();
 	}
 	
-	// Create a new User
+	// Create a new Borrow
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public User createUser(@RequestBody User user) {
-		System.out.println(user);
-	    return userService.save(user);
+	public Borrow createBorrow(@RequestBody Borrow borrow) {
+		System.out.println(borrow);
+	    return borrowService.save(borrow);
 	}
 	
-	// Create a new User
+	// Create a new Borrow
 	@RequestMapping(value = "/", method = RequestMethod.DELETE)
-	public void deleteUser(@RequestBody User user) {
-		System.out.println(user);
-	    userService.delete(user);
+	public void deleteBorrow(@RequestBody int id) {
+		System.out.println(id);
+	    borrowService.delete(id);
 	}
 }

@@ -11,14 +11,14 @@
 
 <title>Library Managment System for Cleartip</title>
 <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-<script src="js/user.js"></script>
+<script src="js/book.js"></script>
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="css/simple-sidebar.css" rel="stylesheet">
 </head>
 
-<body ng-app="user" ng-controller="usercontroller">
+<body  ng-app="book" ng-controller="bookcontroller">
 
 	<div id="wrapper" class="toggled">
 
@@ -37,12 +37,15 @@
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<h1>Users</h1>
+				
 				<hr>
+
 				<div>
 					<form ng-submit="sendPost()">
-						Name : <input ng-model="userform.name" />
-						Email Id : <input ng-model="userform.emailId" />
-						Password : <input ng-model="userform.password" />			
+						Name : <input ng-model="bookform.name" />
+						Author : <input ng-model="bookform.author" />
+						Total Volume : <input ng-model="bookform.totalVolume" />
+						Available Volume : <input ng-model="bookform.availableVolume" />			
 						<button type="submit">Send</button>
 					</form>
 				</div>
@@ -53,22 +56,25 @@
 						<tr>
 							<th>Id</th>
 							<th>Name</th>
-							<th>Email Id</th>
-							<th>Password</th>
+							<th>Author</th>
+							<th>Total Volume</th>
+							<th>Available Volume</th>
 						</tr>
 						<tr>
 							<th><input ng-model="search.id" /></th>
 							<th><input ng-model="search.name" /></th>
-							<th><input ng-model="search.emailId" /></th>
-							<th><input ng-model="search.password" /></th>
+							<th><input ng-model="search.author" /></th>
+							<th><input ng-model="search.totalVolume" /></th>
+							<th><input ng-model="search.availableVolume" /></th>
 						</tr>
-						<tr ng-repeat="user in users | filter:search">
-							<td>{{ user.id }}</td>
-							<td>{{ user.name }}</td>
-							<td>{{ user.emailId }}</td>
-							<td>{{ user.password }}</td>
-							<td><a ng-click="editUser(user)" class="btn btn-primary btn-sm">Edit</a>
-           						| <a ng-click="deleteUser(user)" class="btn btn-danger btn-sm">Delete</a></td>
+						<tr ng-repeat="book in books | filter:search">
+							<td>{{ book.id }}</td>
+							<td>{{ book.name }}</td>
+							<td>{{ book.author }}</td>
+							<td>{{ book.totalVolume }}</td>
+							<td>{{ book.availableVolume }}</td>
+							<td><a ng-click="editUser(book)" class="btn btn-primary btn-sm">Edit</a>
+           						| <a ng-click="deleteUser(book)" class="btn btn-danger btn-sm">Delete</a></td>
 						</tr>
 					</table>
 				</div>

@@ -31,4 +31,9 @@ public class UserService {
 	public List<User> findAll() {
 		return (List<User>) userRepository.findAll();
 	}
+
+	public void delete(User user) {
+		userRepository.delete(user);
+		
+	}
 }

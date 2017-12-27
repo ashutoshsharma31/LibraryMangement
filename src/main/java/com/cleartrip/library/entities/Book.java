@@ -11,8 +11,8 @@ public class Book {
     private long id;	
     private String name;
     private String author;
-    private int totalVolumn;
-    private int availableVolumn;
+    private int totalVolume;
+    private int availableVolume;
 	public long getId() {
 		return id;
 	}
@@ -31,19 +31,23 @@ public class Book {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public int getTotalVolumn() {
-		return totalVolumn;
+	public int getTotalVolume() {
+		return totalVolume;
 	}
-	public void setTotalVolumn(int totalVolumn) {
-		this.totalVolumn = totalVolumn;
+	public void setTotalVolume(int totalVolume) {
+		this.totalVolume = totalVolume;
 	}
-	public int getAvailableVolumn() {
-		return availableVolumn;
+	public int getAvailableVolume() {
+		return availableVolume;
 	}
-	public void setAvailableVolumn(int availableVolumn) {
-		this.availableVolumn = availableVolumn;
+	public void setAvailableVolume(int availableVolume) {
+		this.availableVolume = availableVolume;
 	}
-    
-    
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", name=" + name + ", author=" + author + ", totalVolume=" + totalVolume
+				+ ", availableVolume=" + availableVolume + "]";
+	}
+       
     
 }
