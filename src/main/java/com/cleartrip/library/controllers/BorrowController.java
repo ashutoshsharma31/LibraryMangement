@@ -30,7 +30,6 @@ public class BorrowController {
 	// Create a new Borrow
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Borrow createBorrow(@RequestBody Borrow borrow) {
-		System.out.println(borrow);
 	    return borrowService.save(borrow);
 	}
 	

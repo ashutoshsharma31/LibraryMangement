@@ -33,6 +33,7 @@ public class BorrowService {
 		System.out.println(borrow);
 		borrow.setUser(userRepository.findByEmailId(borrow.getUser().getEmailId()));
 		borrow.setBook(bookRepository.findByName(borrow.getBook().getName()));
+		System.out.println(borrow);
 		return borrowRepository.save(borrow);
 	}
 
