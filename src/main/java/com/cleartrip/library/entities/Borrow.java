@@ -2,12 +2,17 @@ package com.cleartrip.library.entities;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.cleartrip.library.utilities.*;
 
 @Entity
 public class Borrow {
@@ -18,7 +23,12 @@ public class Borrow {
 	private User user;
 	@OneToOne
 	private Book book;
+	@JsonDeserialize(using = CustomerDateAndTimeDeserialize.class)
+	@Temporal(TemporalType.DATE)
 	private Date borrowDate;
+	@JsonDeserialize(using = CustomerDateAndTimeDeserialize.class)
+	@Column(nullable = true)
+	@Temporal(TemporalType.DATE)
 	private Date returnDate;
 
 	public long getId() {

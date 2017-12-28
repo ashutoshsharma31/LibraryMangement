@@ -18,6 +18,7 @@
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="css/simple-sidebar.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 </head>
 
 <body  ng-app="borrow" ng-controller="borrowcontroller">
@@ -42,37 +43,43 @@
 				<hr>
 				<div>
 					<form ng-submit="borrowBook()">
-						User : <select name="repeatSelect" id="repeatSelect" ng-model="borrowform.user">
+						User : <select ng-model="borrowform.user">
 							      <option ng-repeat="option in userslist" value="{{option.emailId}}">{{option.name}}</option>
 							    </select>
-						Book : <select name="repeatSelect" id="repeatSelect" ng-model="borrowform.book">
+						Book : <select ng-model="borrowform.book">
 							      <option ng-repeat="option in bookslist" value="{{option.name}}">{{option.name}}</option>
 							    </select>
-						Borrow Date : <input type="text" id="datepicker" ng-model="borrowform.borrowDate"></p>
+						Borrow Date : <input type="text" class="datepicker" ng-model="borrowform.borrowDate"/></p>
 						<button type="submit">Borrow</button>
 					</form>
 				</div>
 				<hr>
 				<div>
-					<table>
+					<table class="blueTable">
 						<tr>
-							<th>Id</th>
-							<th>Name</th>
-							<th>Author</th>
-							<th>Total Volume</th>
-							<th>Available Volume</th>
+							<th>Borrow Id</th>
+							<th>User Name</th>
+							<th>User Email</th>
+							<th>Book Name</th>
+							<th>Book Author</th>
+							<th>Borrow Date</th>
+							<th>Return Date</th>
 						</tr>
 						<tr>
 							<th><input ng-model="search.id" /></th>
-							<th><input ng-model="search.name" /></th>
-							<th><input ng-model="search.author" /></th>
-							<th><input ng-model="search.totalVolume" /></th>
-							<th><input ng-model="search.availableVolume" /></th>
+							<th><input ng-model="search.user.name" /></th>
+							<th><input ng-model="search.user.emailId" /></th>
+							<th><input ng-model="search.book.name" /></th>
+							<th><input ng-model="search.book.author" /></th>
+							<th><input ng-model="search.borrowDate" /></th>
+							<th><input ng-model="search.returnDate" /></th>
 						</tr>
 						<tr ng-repeat="borrow in borrows | filter:search">
 							<td>{{ borrow.id }}</td>
-							<td>{{ borrow.user }}</td>
-							<td>{{ borrow.book }}</td>
+							<td>{{ borrow.user.name }} </td>
+							<td>{{ borrow.user.emailId }}</td>
+							<td>{{ borrow.book.name }} </td>
+							<td>{{ borrow.book.author }}</td>
 							<td>{{ borrow.borrowDate }}</td>
 							<td>{{ borrow.returnDate }}</td>
 							<td><a ng-click="returnBook(borrow)" class="btn btn-primary btn-sm">Return Book</a></td>
@@ -89,14 +96,9 @@
 		<!-- Bootstrap core JavaScript -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<link rel="stylesheet" href="/resources/demos/style.css">
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script>
-		  $( function() {
-		    $( "#datepicker" ).datepicker();
-		  } );
-		</script>
+		
 </body>
 </html>

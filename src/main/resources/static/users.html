@@ -16,6 +16,7 @@
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="css/simple-sidebar.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 </head>
 
 <body ng-app="user" ng-controller="usercontroller">
@@ -49,7 +50,7 @@
 
 				<hr>
 				<div>
-					<table>
+					<table class="blueTable">
 						<tr>
 							<th>Id</th>
 							<th>Name</th>
@@ -57,7 +58,7 @@
 							<th>Password</th>
 						</tr>
 						<tr>
-							<th><input ng-model="search.id" /></th>
+							<th><input size="3" ng-model="search.id" /></th>
 							<th><input ng-model="search.name" /></th>
 							<th><input ng-model="search.emailId" /></th>
 							<th><input ng-model="search.password" /></th>

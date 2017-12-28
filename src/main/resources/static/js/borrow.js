@@ -8,8 +8,7 @@ app.controller('borrowcontroller', function($scope, $http) {
         id: 0,
         user: 0,
         book: 0,
-        borrowDate: "",
-        returnDate: ""
+        borrowDate: ""
     };
 
     getBorrowDetails();
@@ -27,7 +26,14 @@ app.controller('borrowcontroller', function($scope, $http) {
         });
     }
 
-    
+    $('.datepicker').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        onSelect: function(date) {
+              angular.element($('.datepicker')).triggerHandler('input');
+        }
+      });
     
     function getUsers() {
         $http({
@@ -52,6 +58,8 @@ app.controller('borrowcontroller', function($scope, $http) {
     }
     
     $scope.borrowBook = function() {
+    	
+    	alert($scope.borrowform);
         $http({
             method: 'POST',
             url: '/api/borrows/',
@@ -93,3 +101,4 @@ app.controller('borrowcontroller', function($scope, $http) {
         $scope.borrowform.returnDate = "";
     };
 });
+
