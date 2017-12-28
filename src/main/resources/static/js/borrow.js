@@ -75,6 +75,39 @@ app.controller('borrowcontroller', function($scope, $http) {
 
         });
     }
+    $scope.returnBook = function(borrow) {
+    	var today = new Date();
+    	var dd = today.getDate();
+    	var mm = today.getMonth()+1; //January is 0!
+    	var yyyy = today.getFullYear();
+
+    	if(dd<10) {
+    	    dd = '0'+dd
+    	} 
+
+    	if(mm<10) {
+    	    mm = '0'+mm
+    	} 
+
+    	borrow.returnDate=dd + '/' + mm + '/' + yyyy;
+        $http({
+            method: 'POST',
+            url: '/api/borrows/',
+            data: borrow,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function(response) {
+            getBorrowDetails();
+            $scope.borrows = response.data;
+            clearForm();
+        }, function(error) {
+
+        });
+    }
+
+    
+    
     $scope.editBorrow = function(borrow) {
         $scope.borrowform.id = borrow.id;
         $scope.borrowform.user = borrow.user;
