@@ -1,12 +1,7 @@
 package com.cleartrip.library.controllers;
 
 import java.util.List;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,18 +21,16 @@ public class UserController {
 	public List<User> getAllUsers() {
 		return userService.findAll();
 	}
-	
+
 	// Create a new User
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public User createUser(@RequestBody User user) {
-		System.out.println(user);
-	    return userService.save(user);
+		return userService.save(user);
 	}
-	
+
 	// Create a new User
 	@RequestMapping(value = "/", method = RequestMethod.DELETE)
 	public void deleteUser(@RequestBody User user) {
-		System.out.println(user);
-	    userService.delete(user);
+		userService.delete(user);
 	}
 }

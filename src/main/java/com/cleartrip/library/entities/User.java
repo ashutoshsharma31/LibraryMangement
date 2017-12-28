@@ -13,19 +13,21 @@ public class User {
 	private String name;
 	private String emailId;
 	private String rollno;
-	public User(){
+
+	public User() {
 		super();
 	}
-	public User(long id){
+
+	public User(long id) {
 		super();
 		this.id = id;
 	}
-	
-	public User(String emailId){
+
+	public User(String emailId) {
 		super();
 		this.emailId = emailId;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
@@ -62,7 +64,5 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", emailId=" + emailId + ", rollno=" + rollno + "]";
 	}
-	
-	
 
 }

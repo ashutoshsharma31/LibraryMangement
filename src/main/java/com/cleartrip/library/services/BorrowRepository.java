@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.cleartrip.library.entities.Book;
 import com.cleartrip.library.entities.Borrow;
 import com.cleartrip.library.entities.User;
+
 @Repository
 public interface BorrowRepository extends CrudRepository<Borrow, Integer> {
 

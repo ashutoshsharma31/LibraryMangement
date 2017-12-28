@@ -26,18 +26,16 @@ public class BookController {
 	public List<Book> getAllBooks() {
 		return bookService.findAll();
 	}
-	
+
 	// Create a new Book
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Book createBook(@RequestBody Book book) {
-		System.out.println(book);
-	    return bookService.save(book);
+		return bookService.save(book);
 	}
-	
-	// Create a new Book
+
+	// Delete an existing Book
 	@RequestMapping(value = "/", method = RequestMethod.DELETE)
 	public void deleteBook(@RequestBody Book book) {
-		System.out.println(book);
-	    bookService.delete(book);
+		bookService.delete(book);
 	}
 }

@@ -3,102 +3,119 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<title>Library Managment System for Cleartip</title>
-<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-<script src="js/borrow.js"></script>
+    <title>Library Managment System for Cleartip</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="js/borrow.js"></script>
 
-
-<!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="css/simple-sidebar.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body  ng-app="borrow" ng-controller="borrowcontroller">
+<body ng-app="borrow" ng-controller="borrowcontroller">
 
-	<div id="wrapper" class="toggled">
+    <div id="wrapper" class="toggled">
 
-		<!-- Sidebar -->
-		<div id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li class="sidebar-brand"><a href="/index.html"> Menu </a></li>
-				<li><a href="/users.html">Users</a></li>
-				<li><a href="/books.html">Books</a></li>
-				<li><a href="/borrows.html">Borrow</a></li>
-			</ul>
-		</div>
-		<!-- /#sidebar-wrapper -->
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="/index.html"> Menu </a></li>
+                <li><a href="/users.html">Users</a></li>
+                <li><a href="/books.html">Books</a></li>
+                <li><a href="/borrows.html">Borrow</a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-		<!-- Page Content -->
-		<div id="page-content-wrapper">
-			<div class="container-fluid">
-				<h1>Borrow Book</h1>
-				<hr>
-				<div>
-					<form ng-submit="borrowBook()">
-						User : <select ng-model="borrowform.user">
-							      <option ng-repeat="option in userslist" value="{{option.emailId}}">{{option.name}}</option>
-							    </select>
-						Book : <select ng-model="borrowform.book">
-							      <option ng-repeat="option in bookslist" value="{{option.name}}">{{option.name}}</option>
-							    </select>
-						Borrow Date : <input type="text" class="datepicker" ng-model="borrowform.borrowDate"/></p>
-						<button type="submit">Borrow</button>
-					</form>
-				</div>
-				<hr>
-				<div>
-					<table class="blueTable">
-						<tr>
-							<th style="width:10%">Borrow Id</th>
-							<th style="width:20%">User Name</th>
-							<th style="width:20%">User Email</th>
-							<th style="width:20%">Book Name</th>
-							<th style="width:20%">Book Author</th>
-							<th style="width:20%">Borrow Date</th>
-							<th style="width:20%">Return Date</th>
-						</tr>
-						<tr>
-							<th><input size="3"  ng-model="search.id" /></th>
-							<th><input size="10" ng-model="search.user.name" /></th>
-							<th><input size="15" ng-model="search.user.emailId" /></th>
-							<th><input size="10" ng-model="search.book.name" /></th>
-							<th><input size="10" ng-model="search.book.author" /></th>
-							<th><input size="10" ng-model="search.borrowDate" /></th>
-							<th><input size="10" ng-model="search.returnDate" /></th>
-						</tr>
-						<tr ng-repeat="borrow in borrows | filter:search">
-							<td>{{ borrow.id }}</td>
-							<td>{{ borrow.user.name }} </td>
-							<td>{{ borrow.user.emailId }}</td>
-							<td>{{ borrow.book.name }} </td>
-							<td>{{ borrow.book.author }}</td>
-							<td>{{ borrow.borrowDate }}</td>
-							<td>{{ borrow.returnDate }}</td>
-							<td><a ng-click="returnBook(borrow)" class="btn btn-primary btn-sm">Return Book</a></td>
-						</tr>
-					</table>
-				</div>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Borrow Book</h1>
+                <hr>
+                <div>
+                    <form ng-submit="borrowBook()">
+                        User :
+                        <select ng-model="borrowform.user">
+                            <option ng-repeat="option in userslist" value="{{option.emailId}}">{{option.name}}</option>
+                        </select>
+                        Book :
+                        <select ng-model="borrowform.book">
+                            <option ng-repeat="option in bookslist" value="{{option.name}}">{{option.name}}</option>
+                        </select>
+                        Borrow Date :
+                        <input type="text" class="datepicker" ng-model="borrowform.borrowDate" />
+                        </p>
+                        <button type="submit">Borrow</button>
+                    </form>
+                </div>
+                <hr>
+                <div>
+                    <table class="blueTable">
+                        <tr>
+                            <th style="width:10%">Borrow Id</th>
+                            <th style="width:20%">User Name</th>
+                            <th style="width:20%">User Email</th>
+                            <th style="width:20%">Book Name</th>
+                            <th style="width:20%">Book Author</th>
+                            <th style="width:20%">Borrow Date</th>
+                            <th style="width:20%">Return Date</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input size="3" ng-model="search.id" />
+                            </th>
+                            <th>
+                                <input size="10" ng-model="search.user.name" />
+                            </th>
+                            <th>
+                                <input size="15" ng-model="search.user.emailId" />
+                            </th>
+                            <th>
+                                <input size="10" ng-model="search.book.name" />
+                            </th>
+                            <th>
+                                <input size="10" ng-model="search.book.author" />
+                            </th>
+                            <th>
+                                <input size="10" ng-model="search.borrowDate" />
+                            </th>
+                            <th>
+                                <input size="10" ng-model="search.returnDate" />
+                            </th>
+                        </tr>
+                        <tr ng-repeat="borrow in borrows | filter:search">
+                            <td>{{ borrow.id }}</td>
+                            <td>{{ borrow.user.name }} </td>
+                            <td>{{ borrow.user.emailId }}</td>
+                            <td>{{ borrow.book.name }} </td>
+                            <td>{{ borrow.book.author }}</td>
+                            <td>{{ borrow.borrowDate }}</td>
+                            <td>{{ borrow.returnDate }}</td>
+                            <td><a ng-click="returnBook(borrow)" class="btn btn-primary btn-sm">Return Book</a></td>
+                        </tr>
+                    </table>
+                </div>
 
-			</div>
-			<!-- /#page-content-wrapper -->
+            </div>
+            <!-- /#page-content-wrapper -->
 
-		</div>
-		<!-- /#wrapper -->
+        </div>
+        <!-- /#wrapper -->
 
-		<!-- Bootstrap core JavaScript -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		
+        <!-- Bootstrap core JavaScript -->
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

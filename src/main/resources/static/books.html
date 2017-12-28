@@ -3,92 +3,102 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<title>Library Managment System for Cleartip</title>
-<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-<script src="js/book.js"></script>
-<!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="css/simple-sidebar.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+    <title>Library Managment System for Cleartip</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="js/book.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body  ng-app="book" ng-controller="bookcontroller">
+<body ng-app="book" ng-controller="bookcontroller">
 
-	<div id="wrapper" class="toggled">
+    <div id="wrapper" class="toggled">
 
-		<!-- Sidebar -->
-		<div id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li class="sidebar-brand"><a href="/index.html"> Menu </a></li>
-				<li><a href="/users.html">Users</a></li>
-				<li><a href="/books.html">Books</a></li>
-				<li><a href="/borrows.html">Borrow</a></li>
-			</ul>
-		</div>
-		<!-- /#sidebar-wrapper -->
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="/index.html"> Menu </a></li>
+                <li><a href="/users.html">Users</a></li>
+                <li><a href="/books.html">Books</a></li>
+                <li><a href="/borrows.html">Borrow</a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-		<!-- Page Content -->
-		<div id="page-content-wrapper">
-			<div class="container-fluid">
-				<h1>Books</h1>
-				
-				<hr>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Books</h1>
 
-				<div>
-					<form ng-submit="sendPost()">
-						Name : <input ng-model="bookform.name" />
-						Author : <input ng-model="bookform.author" />
-						Total Volume : <input ng-model="bookform.totalVolume" />
-						Available Volume : <input ng-model="bookform.availableVolume" />			
-						<button type="submit">Send</button>
-					</form>
-				</div>
+                <hr>
 
-				<hr>
-				<div>
-					<table class="blueTable">
-						<tr>
-							<th>Id</th>
-							<th>Name</th>
-							<th>Author</th>
-							<th>Total Volume</th>
-							<th>Available Volume</th>
-						</tr>
-						<tr>
-							<th><input ng-model="search.id" /></th>
-							<th><input ng-model="search.name" /></th>
-							<th><input ng-model="search.author" /></th>
-							<th><input ng-model="search.totalVolume" /></th>
-							<th><input ng-model="search.availableVolume" /></th>
-						</tr>
-						<tr ng-repeat="book in books | filter:search">
-							<td>{{ book.id }}</td>
-							<td>{{ book.name }}</td>
-							<td>{{ book.author }}</td>
-							<td>{{ book.totalVolume }}</td>
-							<td>{{ book.availableVolume }}</td>
-							<td><a ng-click="editUser(book)" class="btn btn-primary btn-sm">Edit</a>
-           						| <a ng-click="deleteUser(book)" class="btn btn-danger btn-sm">Delete</a></td>
-						</tr>
-					</table>
-				</div>
+                <div>
+                    <form ng-submit="sendPost()">
+                        Name :
+                        <input ng-model="bookform.name" /> Author :
+                        <input ng-model="bookform.author" /> Total Volume :
+                        <input ng-model="bookform.totalVolume" /> Available Volume :
+                        <input ng-model="bookform.availableVolume" />
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
 
-			</div>
-			<!-- /#page-content-wrapper -->
+                <hr>
+                <div>
+                    <table class="blueTable">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Author</th>
+                            <th>Total Volume</th>
+                            <th>Available Volume</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input ng-model="search.id" />
+                            </th>
+                            <th>
+                                <input ng-model="search.name" />
+                            </th>
+                            <th>
+                                <input ng-model="search.author" />
+                            </th>
+                            <th>
+                                <input ng-model="search.totalVolume" />
+                            </th>
+                            <th>
+                                <input ng-model="search.availableVolume" />
+                            </th>
+                        </tr>
+                        <tr ng-repeat="book in books | filter:search">
+                            <td>{{ book.id }}</td>
+                            <td>{{ book.name }}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.totalVolume }}</td>
+                            <td>{{ book.availableVolume }}</td>
+                            <td><a ng-click="editUser(book)" class="btn btn-primary btn-sm">Edit</a> | <a ng-click="deleteUser(book)" class="btn btn-danger btn-sm">Delete</a></td>
+                        </tr>
+                    </table>
+                </div>
 
-		</div>
-		<!-- /#wrapper -->
+            </div>
+            <!-- /#page-content-wrapper -->
 
-		<!-- Bootstrap core JavaScript -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-		<script src="vendor/jquery/jquery.min.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Bootstrap core JavaScript -->
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

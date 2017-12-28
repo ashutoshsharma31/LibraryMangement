@@ -1,4 +1,5 @@
 package com.cleartrip.library.utilities;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,20 +12,17 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 
 public class CustomerDateAndTimeDeserialize extends JsonDeserializer<Date> {
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat(
-            "dd/MM/yyyy");
-
-
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 	@Override
-	public Date deserialize(JsonParser paramJsonParser, DeserializationContext paramDeserializationContext) throws IOException, JsonProcessingException {
+	public Date deserialize(JsonParser paramJsonParser, DeserializationContext paramDeserializationContext)
+			throws IOException, JsonProcessingException {
 		String str = paramJsonParser.getText().trim();
-        try {
-        	System.out.println("Parsing date "+str+"   "+ dateFormat.parse(str));
-            return dateFormat.parse(str);
-        } catch (ParseException e) {
+		try {
+			return dateFormat.parse(str);
+		} catch (ParseException e) {
 
-        }
-        return paramDeserializationContext.parseDate(str);
+		}
+		return paramDeserializationContext.parseDate(str);
 	}
 }

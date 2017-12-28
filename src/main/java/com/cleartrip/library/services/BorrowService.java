@@ -1,6 +1,5 @@
 package com.cleartrip.library.services;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ public class BorrowService {
 	UserRepository userRepository;
 	@Autowired
 	BookRepository bookRepository;
+
 	public List<Borrow> find(String emailId) {
 		return borrowRepository.findAllByUserEmailId(emailId);
 	}
@@ -31,11 +31,8 @@ public class BorrowService {
 	}
 
 	public Borrow save(Borrow borrow) {
-		System.out.println(borrow);
 		borrow.setUser(userRepository.findByEmailId(borrow.getUser().getEmailId()));
 		borrow.setBook(bookRepository.findByName(borrow.getBook().getName()));
-		
-		System.out.println(borrow);
 		return borrowRepository.save(borrow);
 	}
 

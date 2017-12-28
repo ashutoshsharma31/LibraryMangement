@@ -3,86 +3,95 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<title>Library Managment System for Cleartip</title>
-<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-<script src="js/user.js"></script>
-<!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="css/simple-sidebar.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+    <title>Library Managment System for Cleartip</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="js/user.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body ng-app="user" ng-controller="usercontroller">
 
-	<div id="wrapper" class="toggled">
+    <div id="wrapper" class="toggled">
 
-		<!-- Sidebar -->
-		<div id="sidebar-wrapper">
-			<ul class="sidebar-nav">
-				<li class="sidebar-brand"><a href="/index.html"> Menu </a></li>
-				<li><a href="/users.html">Users</a></li>
-				<li><a href="/books.html">Books</a></li>
-				<li><a href="/borrows.html">Borrow</a></li>
-			</ul>
-		</div>
-		<!-- /#sidebar-wrapper -->
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="/index.html"> Menu </a></li>
+                <li><a href="/users.html">Users</a></li>
+                <li><a href="/books.html">Books</a></li>
+                <li><a href="/borrows.html">Borrow</a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-		<!-- Page Content -->
-		<div id="page-content-wrapper">
-			<div class="container-fluid">
-				<h1>Users</h1>
-				<hr>
-				<div>
-					<form ng-submit="sendPost()">
-						Name : <input ng-model="userform.name" />
-						Email Id : <input ng-model="userform.emailId" />
-						Roll No : <input ng-model="userform.rollno" />			
-						<button type="submit">Send</button>
-					</form>
-				</div>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Users</h1>
+                <hr>
+                <div>
+                    <form ng-submit="sendPost()">
+                        Name :
+                        <input ng-model="userform.name" /> Email Id :
+                        <input ng-model="userform.emailId" /> Roll No :
+                        <input ng-model="userform.rollno" />
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
 
-				<hr>
-				<div>
-					<table class="blueTable">
-						<tr>
-							<th>Id</th>
-							<th>Name</th>
-							<th>Email Id</th>
-							<th>Roll No</th>
-						</tr>
-						<tr>
-							<th><input size="3" ng-model="search.id" /></th>
-							<th><input ng-model="search.name" /></th>
-							<th><input ng-model="search.emailId" /></th>
-							<th><input ng-model="search.rollno" /></th>
-						</tr>
-						<tr ng-repeat="user in users | filter:search">
-							<td>{{ user.id }}</td>
-							<td>{{ user.name }}</td>
-							<td>{{ user.emailId }}</td>
-							<td>{{ user.rollno }}</td>
-							<td><a ng-click="editUser(user)" class="btn btn-primary btn-sm">Edit</a>
-           						| <a ng-click="deleteUser(user)" class="btn btn-danger btn-sm">Delete</a></td>
-						</tr>
-					</table>
-				</div>
+                <hr>
+                <div>
+                    <table class="blueTable">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email Id</th>
+                            <th>Roll No</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input size="3" ng-model="search.id" />
+                            </th>
+                            <th>
+                                <input ng-model="search.name" />
+                            </th>
+                            <th>
+                                <input ng-model="search.emailId" />
+                            </th>
+                            <th>
+                                <input ng-model="search.rollno" />
+                            </th>
+                        </tr>
+                        <tr ng-repeat="user in users | filter:search">
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.emailId }}</td>
+                            <td>{{ user.rollno }}</td>
+                            <td><a ng-click="editUser(user)" class="btn btn-primary btn-sm">Edit</a></td>
+                            <td><a ng-click="deleteUser(user)" class="btn btn-danger btn-sm">Delete</a></td>
+                        </tr>
+                    </table>
+                </div>
 
-			</div>
-			<!-- /#page-content-wrapper -->
+            </div>
+            <!-- /#page-content-wrapper -->
 
-		</div>
-		<!-- /#wrapper -->
+        </div>
+        <!-- /#wrapper -->
 
-		<!-- Bootstrap core JavaScript -->
-		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-		<script src="vendor/jquery/jquery.min.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

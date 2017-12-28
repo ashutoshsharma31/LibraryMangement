@@ -21,17 +21,16 @@ public class BorrowController {
 	public List<Borrow> getAllBorrows() {
 		return borrowService.findAll();
 	}
-	
+
 	// Create a new Borrow
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Borrow createBorrow(@RequestBody Borrow borrow) {
-	    return borrowService.save(borrow);
+		return borrowService.save(borrow);
 	}
-	
-	// Create a new Borrow
+
+	// Delete an existing Borrow
 	@RequestMapping(value = "/", method = RequestMethod.DELETE)
 	public void deleteBorrow(@RequestBody int id) {
-		System.out.println(id);
-	    borrowService.delete(id);
+		borrowService.delete(id);
 	}
 }
