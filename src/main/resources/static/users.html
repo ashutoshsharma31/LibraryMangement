@@ -43,7 +43,7 @@
 					<form ng-submit="sendPost()">
 						Name : <input ng-model="userform.name" />
 						Email Id : <input ng-model="userform.emailId" />
-						Password : <input ng-model="userform.password" />			
+						Roll No : <input ng-model="userform.rollno" />			
 						<button type="submit">Send</button>
 					</form>
 				</div>
@@ -55,19 +55,19 @@
 							<th>Id</th>
 							<th>Name</th>
 							<th>Email Id</th>
-							<th>Password</th>
+							<th>Roll No</th>
 						</tr>
 						<tr>
 							<th><input size="3" ng-model="search.id" /></th>
 							<th><input ng-model="search.name" /></th>
 							<th><input ng-model="search.emailId" /></th>
-							<th><input ng-model="search.password" /></th>
+							<th><input ng-model="search.rollno" /></th>
 						</tr>
 						<tr ng-repeat="user in users | filter:search">
 							<td>{{ user.id }}</td>
 							<td>{{ user.name }}</td>
 							<td>{{ user.emailId }}</td>
-							<td>{{ user.password }}</td>
+							<td>{{ user.rollno }}</td>
 							<td><a ng-click="editUser(user)" class="btn btn-primary btn-sm">Edit</a>
            						| <a ng-click="deleteUser(user)" class="btn btn-danger btn-sm">Delete</a></td>
 						</tr>

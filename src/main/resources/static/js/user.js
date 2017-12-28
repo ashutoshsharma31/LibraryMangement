@@ -6,7 +6,7 @@ app.controller('usercontroller', function($scope, $http) {
         id: "",
         name: "",
         emailId: "",
-        password: ""
+        rollno: ""
     };
 
     getUserDetails();
@@ -42,7 +42,7 @@ app.controller('usercontroller', function($scope, $http) {
         $scope.userform.id = user.id;
         $scope.userform.name = user.name;
         $scope.userform.emailId = user.emailId;
-        $scope.userform.password = user.password;
+        $scope.userform.rollno = user.rollno;
     }
     $scope.deleteUser = function(user) {
         $http({
@@ -59,6 +59,6 @@ app.controller('usercontroller', function($scope, $http) {
         $scope.userform.id = "";
         $scope.userform.name = "";
         $scope.userform.emailId = "";
-        $scope.userform.password = "";
+        $scope.userform.rollno = "";
     };
 });

@@ -12,7 +12,7 @@ public class User {
 	private long id;
 	private String name;
 	private String emailId;
-	private String password;
+	private String rollno;
 	public User(){
 		super();
 	}
@@ -50,17 +50,17 @@ public class User {
 		this.emailId = emailId;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getRollno() {
+		return rollno;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setRollno(String rollno) {
+		this.rollno = rollno;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", emailId=" + emailId + ", password=" + password + "]";
+		return "User [id=" + id + ", name=" + name + ", emailId=" + emailId + ", rollno=" + rollno + "]";
 	}
 	
 	
